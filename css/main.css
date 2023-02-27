@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+
+:root {
+    --main-color: rgb(13, 54, 96);
+    --clear-color: rgb(239, 242, 244);
+    --white: white;
+    --input-border: rgb(187, 189, 190);
+    --red: red;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(245, 249, 252);
+    color: #333;
+}
+
+.container {
+    width: 100%;
+}
+
+.header-part {
+    text-align: center;
+    width: 100%;
+    background-color: var(--main-color);
+    padding: 20px;
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-part a {
+    text-decoration: none;
+    color: var(--white);
+    padding: 10px 20px;
+}
+
+#register {
+    border: 2px solid var(--white);
+    border-radius: 100px;
+}
+
+#register:hover {
+    border: 1px solid var(--clear-color);
+}
+
+#register:active {
+    border: 2px solid var(--white);
+}
+
+#logout {
+    border: 2px solid var(--red);
+    border-radius: 100px;
+}
+
+#logout:hover {
+    border: 1px solid var(--red);
+}
+
+#logout:active {
+    border: 2px solid var(--red);
+}
+
+.center-part h3 {
+    text-align: center;
+}
+
+.center-part {
+    background-color: var(--clear-color);
+    padding: 20px;
+    margin: 2% auto;
+    width: 40%;
+    border: 1px solid var(--input-border);
+}
+
+.input-div input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--input-border);
+    outline: none;
+}
+ .input-div label {
+    padding: 5px 0;
+ }
+
+ .button-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+ }
+
+.button-div input {
+    padding: 10px 20px;
+    border: 1px solid var(--input-border);
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+footer {
+    font-size: x-small;
+    text-align: center;
+    padding: 50px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.profile-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.profile-name img {
+    width: 30px;
+    border-radius: 100px;
+}

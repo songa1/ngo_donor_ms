@@ -1,0 +1,69 @@
+
+.ngo-list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.ngo {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background: url(../assets/images/ngo.jpg) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.ngo-add {
+    border: 1px solid var(--main-color);
+    width: 200px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ngo-add h1 {
+    color: var(--main-color);
+    font-size: 120px;
+}
+
+.ngo:hover {
+    border: 3px solid var(--main-color);
+}
+
+.ngo:active {
+    border: none;
+}
+
+.ngo-add:hover {
+    border: 1px solid var(--main-color);
+}
+
+.ngo-add:active {
+    border: none;
+}
+
+
+.ngo div {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.ngo p {
+    font-weight: bold;
+    color: var(--white);
+}
