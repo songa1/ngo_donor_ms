@@ -29,23 +29,23 @@
                         <h2>NGO INFORMATION</h2>
                         <div class="input-div">
                             <label for="full-name">NGO Name</label>
-                            <input type="text" name="full-name" id="full-name" placeholder="Full Name">
+                            <input type="text" name="ngo_name" id="ngo_name" placeholder="Full Name">
                         </div>
                         <div class="input-div">
                             <label for="username">NGO Address</label>
-                            <input type="text" name="username" id="username" placeholder="User name">
+                            <input type="text" name="ngo_address" id="ngo_address" placeholder="NGO Adress">
                         </div>
                         <div class="input-div">
-                            <label for="email">NGO Phone</label>
-                            <input type="email" name="email" id="email" placeholder="Email">
+                            <label for="ngo_phone">NGO Phone</label>
+                            <input type="tel" name="ngo_phone" id="ngo_phone" placeholder="Phone">
                         </div>
                         <div class="input-div">
                             <label for="password">NGO Email</label>
-                            <input type="text" name="password" id="password" placeholder="Password">
+                            <input type="email" name="ngo_email" id="ngo_email" placeholder="Email">
                         </div>
                         <div class="input-div">
-                            <label for="c-password">NGO Website</label>
-                            <input type="text" name="c-password" id="c-password" placeholder="Confirm Password">
+                            <label for="ngo_web">NGO Website</label>
+                            <input type="url" name="ngo_web" id="ngo_web" placeholder="Website">
                         </div>
                     </div>
                     <div class="reg-part">
@@ -81,6 +81,15 @@
                     <a href="./index.php">Login</a>
                 </div>
             </form>
+            <?php
+                if(isset($POST['register-btn'])){
+                    $ngoName = $POST['ngo_name']
+                    $ngoAddress = $POST['ngo_address']
+                    $ngoEmail = $POST['ngo_email']
+                    $ngoPhone = $POST['ngo_phone']
+                    $ngoUrl = $POST['ngo_website']
+                }
+            ?>
         </div>
         <footer>
             <p>&copy; Achille Songa 2023</p>
