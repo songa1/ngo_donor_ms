@@ -1,3 +1,10 @@
+<?php
+require '../Models/NgoModel.php';
+
+$obj = new NgoModel();
+$obj.getAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
