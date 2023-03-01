@@ -1,4 +1,4 @@
-# ngo_donor_ms
+# NGO AND DONORS MANAGEMENT SYSTEM
 
 This is a system that will help Non Governmental Organisations improve their record tracking. This system will allow them to keep records of their beneficiaries, funds, donors and their employees.
 
@@ -8,7 +8,7 @@ This project is made as a part of school project to be submitted to the teacher,
 
 # Developer
 
-The project is being make by [Cishahayo Songa Achille](https://linkedin.com/in/achillesonga) under the supervision of [](), a facilitator at [IPRC Kigali](https://iprckigali.rp.ac.rw)
+The project is being made by [Cishahayo Songa Achille](https://linkedin.com/in/achillesonga) under the supervision of [](), a facilitator at [IPRC Kigali](https://iprckigali.rp.ac.rw)
 
 # Technology used
 
