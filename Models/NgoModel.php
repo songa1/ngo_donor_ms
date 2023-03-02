@@ -10,6 +10,10 @@ class NgoModel extends Connection{
     private $ngoAddress;
     private $ngoUrl;
 
+    public function __construct(){
+        parent::__construct();
+    }
+
     public function __construct($id=null, $name="",
      $phone="", $email="", $address="",$url=""){
         parent::__construct();

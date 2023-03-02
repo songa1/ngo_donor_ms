@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Config/Connection.php';
+require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/NGO_PROJECT/Config/Connection.php");
 
 class UserModel extends Connection {
 
@@ -40,13 +40,15 @@ class UserModel extends Connection {
         $query = $this->db->prepare("SELECT * FROM ngo_employees WHERE employee_email = ? AND employee_password = ?"); 
         $query->execute([$email, $password]); 
 
-        $count = $query->rowCount();  
-        if($count > 0)  
+        $count = count($query->fetchAll());  
+        if($count == 1)  
         {  
             $_SESSION["email"] = $email;  
-            header("..Views/dashboard/analytics.php");  
+            header("../Views/welcome.php");  
+            return true;
         } else{  
-            $message = '<script>alert("Wrong Data@")</script>';  
+            $message = '<script>alert("Wrong Data!")</script>'; 
+            return false; 
         }
     }
 }

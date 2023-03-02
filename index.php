@@ -15,23 +15,23 @@
             <form class="login-form" method="POST" action="index.php">
                 <div class="input-div">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Email">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="input-div">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
                 <div class="button-div">
-                    <input type="submit" value="Log in" name="login">
+                    <input type="submit" name="loginBtn" value="Log in">
                     <a href="./register.php">Register</a>
                 </div>
             </form>
 
             <?php
 
-                if(isset($_POST['login'])){
+                if(isset($_POST['loginBtn'])){
                     
-                    require_once('../Models/UserModel.php');
+                    require_once('./Models/UserModel.php');
 
                     $email = $_POST['email'];
                     $password = $_POST['password'];

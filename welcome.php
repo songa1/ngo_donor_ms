@@ -25,6 +25,9 @@
                     <h1>+</h1>
                 </div>
             </div>
+            <?php
+                
+            ?>
         </div>
         <footer>
             <p>&copy; Achille Songa 2023</p>
