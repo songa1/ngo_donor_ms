@@ -7,16 +7,18 @@ class NgoModel extends Connection{
     private $name;
     private $phone;
     private $email;
-    private $physicalAddress;
+    private $ngoAddress;
+    private $ngoUrl;
 
-    public function __construct($id=null,$name="",
-    $phone="",$email="",$pa=""){
+    public function __construct($id=null, $name="",
+     $phone="", $email="", $address="",$url=""){
         parent::__construct();
         $this->id = $id;
         $this->name=$name;
         $this->email = $email;
         $this->phone=$phone;
-        $this->physicalAddress=$pa;
+        $this->ngoAddress=$address;
+        $this->ngoUrl = $url;
     }
 
     public function setId($id){
@@ -34,12 +36,12 @@ class NgoModel extends Connection{
     }
 
     //function for saving into database
-    public function save(){
+    public function addNgo(){
         try{
-            $stm = $this->db->prepare("INSERT INTO ngo(name,email,phone,physical_address)VALUES(?,?,?,?)");
-            $stm->execute([$this->name,$this->email,$this->phone,$this->physicalAddress]);
-            return "success";
-            //return $this->db->insertId();
+            $sql = $this->db->prepare("INSERT INTO ngo(ngo_name,ngo_email,ngo_phone,ngo_address, ngo_url)VALUES(?,?,?,?,?)");
+            $sql->execute([$this->name, $this->email, $this->phone, $this->ngoAddress, $this->ngoUrl]);
+            // return "Added a new NGO";
+            return $this->db->lastInsertId();
         }
         catch(Exception $e){
             return $e->getMessage();
