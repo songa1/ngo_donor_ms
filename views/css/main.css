@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
 * {
     box-sizing: border-box;
-    font-family: "Montserrat";
+    font-family: 'Tilt Neon', cursive;
 }
 
 :root {

@@ -35,6 +35,20 @@ class UserModel extends Connection {
             return $e->getMessage();
         }
     }
+
+    public function login($email, $password){
+        $query = $this->db->prepare("SELECT * FROM ngo_employees WHERE employee_email = ? AND employee_password = ?"); 
+        $query->execute([$email, $password]); 
+
+        $count = $query->rowCount();  
+        if($count > 0)  
+        {  
+            $_SESSION["email"] = $email;  
+            header("..Views/dashboard/analytics.php");  
+        } else{  
+            $message = '<script>alert("Wrong Data@")</script>';  
+        }
+    }
 }
 
 ?>

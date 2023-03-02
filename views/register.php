@@ -11,6 +11,7 @@
             display: flex;
             flex-direction: row;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .reg-part {
@@ -100,15 +101,20 @@
                     $employeePhone = $_POST['employee_phone'];
                     $employeeDob = $_POST['employee_dob'];
                     $employeePass = $_POST['password'];
+                    $employeePassConfirm = $_POST['c-password'];
                     $userName = $_POST['employee_name'];
 
-                    $ngoInstace = new NgoModel(null, $ngoName, $ngoPhone, $ngoEmail, $ngoAddress, $ngoUrl);
-                    $ngoId = $ngoInstace->addNgo();
+                    if($employeePass === $employeePassConfirm){
+                        $ngoInstace = new NgoModel(null, $ngoName, $ngoPhone, $ngoEmail, $ngoAddress, $ngoUrl);
+                        $ngoId = $ngoInstace->addNgo();
 
-                    $userInstance = new UserModel();
-                    $userRes = $userInstance->registerUser(null, $employeeName, $employeeEmail, $employeePhone, $employeeDob, $employeePass, $ngoId, 1);
+                        $userInstance = new UserModel();
+                        $userRes = $userInstance->registerUser(null, $employeeName, $employeeEmail, $employeePhone, $employeeDob, $employeePass, $ngoId, 1);
 
-                    echo "<script>alert('$userRes')</script>";
+                        echo "<script>alert('$userRes')</script>";
+                    }else{
+                        echo "<script>alert('Passwords do not match!')</script>";
+                    }
 
                 }
             ?>

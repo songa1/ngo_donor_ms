@@ -12,20 +12,39 @@
         <?php include('./assets/components/notLoggedInNav.php') ?>
         <div class="center-part">
             <h3>Login to your account</h3>
-            <form class="login-form" action="./welcome.php">
+            <form class="login-form" method="POST" action="index.php">
                 <div class="input-div">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder="User name">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email">
                 </div>
                 <div class="input-div">
                     <label for="password">Password</label>
-                    <input type="text" name="password" id="password" placeholder="Password">
+                    <input type="password" name="password" id="password" placeholder="Password">
                 </div>
                 <div class="button-div">
-                    <input type="submit" value="Log in" name="login-btn">
+                    <input type="submit" value="Log in" name="login">
                     <a href="./register.php">Register</a>
                 </div>
             </form>
+
+            <?php
+
+                if(isset($_POST['login'])){
+                    
+                    require_once('../Models/UserModel.php');
+
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+
+                    if(empty($email) || empty($password)) {  
+                        $message = '<script>alert("All fields are required!")</script>';  
+                    }  else{
+                        $userInstance = new UserModel();
+                        $login = $userInstance->login($email, $password);
+                    }
+                }
+
+            ?>
         </div>
         <footer>
             <p>&copy; Achille Songa 2023</p>
