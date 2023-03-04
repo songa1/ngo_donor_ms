@@ -24,7 +24,7 @@
     <?php include('./assets/components/notLoggedInNav.php') ?>
         <div class="center-part">
             <h3>Create a new account</h3>
-            <form class="register-form" method="POST" action="register.php">
+            <form class="register-form" method="POST">
                 <div class="reg-parts">
                     <div class="reg-part">
                         <h2>NGO INFORMATION</h2>
@@ -85,8 +85,8 @@
 
             <?php
                 if(isset($_POST['register'])){
-                    require_once('../Models/NgoModel.php');
-                    require_once('../Models/UserModel.php');
+                    require_once('./Models/NgoModel.php');
+                    require_once('./Models/UserModel.php');
 
                     // NGO INFORMATION
                     $ngoName = $_POST['ngo_name'];
@@ -111,7 +111,9 @@
                         $userInstance = new UserModel();
                         $userRes = $userInstance->registerUser(null, $employeeName, $employeeEmail, $employeePhone, $employeeDob, $employeePass, $ngoId, 1);
 
-                        echo "<script>alert('$userRes')</script>";
+                        $ngoInstace->updateNgo($userRes);
+
+                        echo "<script>alert('NGO and User added!')</script>";
                     }else{
                         echo "<script>alert('Passwords do not match!')</script>";
                     }

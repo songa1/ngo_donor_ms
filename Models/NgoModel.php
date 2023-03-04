@@ -1,6 +1,6 @@
 <?php
 
-require_once("../Config/Connection.php");
+require_once("./Config/Connection.php");
 
 class NgoModel extends Connection{
     private $id;
@@ -9,10 +9,6 @@ class NgoModel extends Connection{
     private $email;
     private $ngoAddress;
     private $ngoUrl;
-
-    public function __construct(){
-        parent::__construct();
-    }
 
     public function __construct($id=null, $name="",
      $phone="", $email="", $address="",$url=""){
@@ -58,25 +54,36 @@ class NgoModel extends Connection{
             $stm = $this->db->prepare("SELECT * FROM ngo");
             $stm->execute();
             //$stm->setFetchMode()
-            return $stm->fetchAll();
+            return $stm->fetch();
         }
         catch(Exception $e){
             return $e->getMessage();
         }
     }
     //function for retrieving one by Id
-    public function getById(){
+    public function getById($id){
         try{
-            $stm = $this->db->prepare("SELECT * FROM ngo WHERE id=?");
-            $stm->execute([$this->id]);
+            $stm = $this->db->prepare("SELECT * FROM ngo WHERE created_by=?");
+            $stm->execute([$id]);
             //$stm->setFetchMode()
-            return $stm->fetchAll();
+            return $stm->fetch();
         }
         catch(Exception $e){
             return $e->getMessage();
         }
     }
     //function for updating
+
+    public function updateNgo($id){
+        try {
+            $sql = $this->db->prepare("UPDATE ngo SET created_by=? WHERE ngo_id=?");
+            $sql->execute([$id, $this->id]);
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+    }
 
     //function for delete
 

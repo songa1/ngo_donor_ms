@@ -15,19 +15,21 @@
             <h2>Welcome Damascene!</h2>
             <p>Here's a list of NGOs you belong to. Click on it to go to the dashboard, or create another one.</p>
             <div class="ngo-list">
-                <div class="ngo">
-                    <div><p>Compassion International</p></div>
-                </div>
-                <div class="ngo">
-                    <div><p>Save The Children</p></div>
-                </div>
+                <?php
+                    require_once './Models/NgoModel.php';
+
+                    $ngoInstance = new NgoModel();
+                    $ngo = $ngoInstance->getById(8);
+                    ?>
+                <a class="ngo" href="./dashboard/analytics.php?ngo=<?php echo $ngo['ngo_id'] ?>">
+                    <div><p><?php echo $ngo['ngo_name']; ?></p></div>
+                </a>
+                    <?php
+                ?>
                 <div class="ngo-add" id="openAddModal">
                     <h1>+</h1>
                 </div>
             </div>
-            <?php
-                
-            ?>
         </div>
         <footer>
             <p>&copy; Achille Songa 2023</p>

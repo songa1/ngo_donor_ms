@@ -1,3 +1,9 @@
+<?php
+
+$ngo_id = $_GET['ngo'];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

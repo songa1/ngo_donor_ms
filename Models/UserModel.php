@@ -1,6 +1,6 @@
 <?php
 
-require_once(realpath($_SERVER["DOCUMENT_ROOT"])."/NGO_PROJECT/Config/Connection.php");
+require_once("../Config/Connection.php");
 
 class UserModel extends Connection {
 
@@ -27,28 +27,47 @@ class UserModel extends Connection {
         $this->userNgo = $ngo;
         $this->userRole = $role;
 
+        require_once 'NgoModel.php';
+
         try {
             $sql = $this->db->prepare("INSERT INTO ngo_employees(employee_name, employee_email, employee_phone, employee_dob, employee_password, ngo_id, role_id)VALUES(?,?,?,?,?,?,?)");
             $sql->execute([$name, $email, $phone, $dob, $password, $ngo, $role]);
-            return "Employee ".$this->db->lastInsertId()." Added!";
+            return $this->db->lastInsertId();
         } catch(Exception $e) {
             return $e->getMessage();
         }
     }
 
     public function login($email, $password){
-        $query = $this->db->prepare("SELECT * FROM ngo_employees WHERE employee_email = ? AND employee_password = ?"); 
-        $query->execute([$email, $password]); 
+        try {
+            $query = $this->db->prepare("SELECT * FROM ngo_employees WHERE employee_email = ? AND employee_password = ?"); 
+            $query->execute([$email, $password]); 
 
-        $count = count($query->fetchAll());  
-        if($count == 1)  
-        {  
-            $_SESSION["email"] = $email;  
-            header("../Views/welcome.php");  
-            return true;
-        } else{  
-            $message = '<script>alert("Wrong Data!")</script>'; 
-            return false; 
+            $count = count($query->fetchAll());  
+            if($count == 1)  
+            {  
+                $_SESSION["email"] = $email;  
+                header("../welcome.php");  
+                $message = '<script>alert("Login successful!!")</script>';
+                return $message;
+            } else{  
+                $message = '<script>alert("Wrong Data!")</script>'; 
+                return $message; 
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function listEmployees($ngo){
+        try{
+            $stm = $this->db->prepare("SELECT * FROM ngo_employees WHERE ngo_id = ?");
+            $stm->execute([$ngo]);
+            //$stm->setFetchMode()
+            return $stm->fetchAll();
+        }
+        catch(Exception $e){
+            return $e->getMessage();
         }
     }
 }
