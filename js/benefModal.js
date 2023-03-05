@@ -1,24 +1,24 @@
-let userModal = document.getElementById("addUser");
+let benefModal = document.getElementById("addBeneficiary");
 
 // Get the button that opens the modal
-let userModalBtn = document.getElementById("add-new");
+let benefModalBtn = document.getElementById("add-new-beneficiary");
 
 // Get the <span> element that closes the modal
 let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-userModalBtn.onclick = function() {
-  userModal.style.display = "block";
+benefModalBtn.onclick = function() {
+    benefModal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  userModal.style.display = "none";
+    benefModal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == userModal) {
-    userModal.style.display = "none";
+  if (event.target == benefModal) {
+    benefModal.style.display = "none";
   }
 }

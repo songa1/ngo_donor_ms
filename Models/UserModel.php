@@ -27,8 +27,6 @@ class UserModel extends Connection {
         $this->userNgo = $ngo;
         $this->userRole = $role;
 
-        require_once 'NgoModel.php';
-
         try {
             $sql = $this->db->prepare("INSERT INTO ngo_employees(employee_name, employee_email, employee_phone, employee_dob, employee_password, ngo_id, role_id)VALUES(?,?,?,?,?,?,?)");
             $sql->execute([$name, $email, $phone, $dob, $password, $ngo, $role]);

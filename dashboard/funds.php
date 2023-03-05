@@ -2,7 +2,6 @@
 
 $ngo_id = $_GET['ngo'];
 
-
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +13,7 @@ $ngo_id = $_GET['ngo'];
     <title>Funds - NGO MS</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/modal.css">
 </head>
 <body>
     <div class="container">
@@ -31,7 +31,7 @@ $ngo_id = $_GET['ngo'];
                                 <input type="text" placeholder="Search...">
                             </div>
                             <div class="button-div">
-                                <input type="submit" name="add-new" id="add-new" value="+">
+                                <input type="submit" name="add-new-fund" id="add-new-fund" value="+">
                             </div>
                         </div>
                     </div>
@@ -40,78 +40,87 @@ $ngo_id = $_GET['ngo'];
                             <thead>
                                 <tr>
                                     <th>Fund ID</th>
+                                    <th>Amount</th>
                                     <th>Donor</th>
-                                    <th>Receiver</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Compassion International</td>
-                                    <td>Spiritual Support</td>
-                                    <td>
-                                        <div class="button-div
-                                        ">
-                                            <input type="submit" value="Edit">
-                                            <input type="submit" value="Delete">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Compassion International</td>
-                                    <td>Spiritual Support</td>
-                                    <td>
-                                        <div class="button-div
-                                        ">
-                                            <input type="submit" value="Edit">
-                                            <input type="submit" value="Delete">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Compassion International</td>
-                                    <td>Spiritual Support</td>
-                                    <td>
-                                        <div class="button-div
-                                        ">
-                                            <input type="submit" value="Edit">
-                                            <input type="submit" value="Delete">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Compassion International</td>
-                                    <td>Spiritual Support</td>
-                                    <td>
-                                        <div class="button-div
-                                        ">
-                                            <input type="submit" value="Edit">
-                                            <input type="submit" value="Delete">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Compassion International</td>
-                                    <td>Spiritual Support</td>
-                                    <td>
-                                        <div class="button-div
-                                        ">
-                                            <input type="submit" value="Edit">
-                                            <input type="submit" value="Delete">
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php
+                                    require_once '../Models/FundModel.php';
+
+                                    $fundIn = new FundModel();
+                                    $funds = $fundIn->listFundsForNgo($ngo_id);
+                                    foreach($funds as $fund){
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $fund['fund_id'] ?></td>
+                                                <td><?php echo $fund['fund_amount'] ?></td>
+                                                <td><?php echo $fund['fund_donor'] ?></td>
+                                                <td>
+                                                    <div class="button-div
+                                                    ">
+                                                        <input type="submit" value="Edit">
+                                                        <input type="submit" value="Delete">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="addFunds" class="modal">
+        <!-- Modal content -->
+            <form class="modal-content" method="POST">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Add a new Fund</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="input-div">
+                        <label for="b-name">Beneficiary Name</label>
+                        <input type="text" name="b-name" id="b-name" placeholder="Name" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="b-email">Beneficiary Email</label>
+                        <input type="email" name="b-email" id="b-email" placeholder="Email" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="b-phone">Beneficiary Phone Number</label>
+                        <input type="tel" name="b-phone" id="b-phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="b-occupation">Beneficiary Occupation</label>
+                        <input type="text" name="b-occupation" id="b-occupation" placeholder="Occupation" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="e-dob">Beneficiary Date Of Birth</label>
+                        <input type="date" name="b-dob" id="b-dob" placeholder="Date Of Birth" required>
+                    </div>
+                </div>
+                <div class="modal-footer button-div">
+                    <div></div>
+                    <input type="submit" value="Add Beneficiary" name="add-beneficiary">
+                </div>
+            </form>
+        </div>
+        <?php
+            if(isset($_POST['add-beneficiary'])){
+                $name = $_POST['b-name'];
+                $email = $_POST['b-email'];
+                $phone = $_POST['b-phone'];
+                $dob = $_POST['b-dob'];
+                $occupation = $_POST['b-occupation'];
+
+                $benefIn->registerBeneficiary(null, $name, $email, $phone, $dob, $occupation, $ngo_id);
+            }
+        ?>
     </div>
+    <script src="../js/fundsModal.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-require_once("./Config/Connection.php");
+require_once("../Config/Connection.php");
 
 class NgoModel extends Connection{
     private $id;
@@ -54,7 +54,7 @@ class NgoModel extends Connection{
             $stm = $this->db->prepare("SELECT * FROM ngo");
             $stm->execute();
             //$stm->setFetchMode()
-            return $stm->fetch();
+            return $stm->fetchAll();
         }
         catch(Exception $e){
             return $e->getMessage();

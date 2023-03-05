@@ -2,7 +2,6 @@
 
 $ngo_id = $_GET['ngo'];
 
-
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +55,7 @@ $ngo_id = $_GET['ngo'];
                                     foreach($employees as $employee){
                                         ?>
                                             <tr>
-                                                <td>1</td>
+                                                <td><?php echo $employee['employee_id'] ?></td>
                                                 <td><?php echo $employee['employee_name'] ?></td>
                                                 <td><?php echo $employee['employee_email'] ?></td>
                                                 <td>
