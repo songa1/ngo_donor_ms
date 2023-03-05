@@ -26,7 +26,7 @@ class FundModel extends Connection {
         $this->benefNgo = $ngo;
 
         try {
-            $sql = $this->db->prepare("INSERT INTO ngo_beneficiaries(beneficiary_name, beneficiary_email, beneficiary_phone, beneficiary_dob, beneficiary_occupation, ngo_id)VALUES(?,?,?,?,?,?)");
+            $sql = $this->db->prepare("INSERT INTO ngo_funds(beneficiary_name, beneficiary_email, beneficiary_phone, beneficiary_dob, beneficiary_occupation, ngo_id)VALUES(?,?,?,?,?,?)");
             $sql->execute([$name, $email, $phone, $dob, $occupation, $ngo]);
             return $this->db->lastInsertId();
         } catch(Exception $e) {

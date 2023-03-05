@@ -83,24 +83,16 @@ $ngo_id = $_GET['ngo'];
                 </div>
                 <div class="modal-body">
                     <div class="input-div">
-                        <label for="b-name">Beneficiary Name</label>
-                        <input type="text" name="b-name" id="b-name" placeholder="Name" required>
+                        <label for="d-name">Donor Name</label>
+                        <input type="text" name="d-name" id="d-name" placeholder="Name" required>
                     </div>
                     <div class="input-div">
-                        <label for="b-email">Beneficiary Email</label>
-                        <input type="email" name="b-email" id="b-email" placeholder="Email" required>
+                        <label for="d-email">Donor Email</label>
+                        <input type="email" name="d-email" id="d-email" placeholder="Email" required>
                     </div>
                     <div class="input-div">
-                        <label for="b-phone">Beneficiary Phone Number</label>
-                        <input type="tel" name="b-phone" id="b-phone" placeholder="Phone Number" required>
-                    </div>
-                    <div class="input-div">
-                        <label for="b-occupation">Beneficiary Occupation</label>
-                        <input type="text" name="b-occupation" id="b-occupation" placeholder="Occupation" required>
-                    </div>
-                    <div class="input-div">
-                        <label for="e-dob">Beneficiary Date Of Birth</label>
-                        <input type="date" name="b-dob" id="b-dob" placeholder="Date Of Birth" required>
+                        <label for="d-phone">Donor Phone Number</label>
+                        <input type="tel" name="d-phone" id="d-phone" placeholder="Phone Number" required>
                     </div>
                 </div>
                 <div class="modal-footer button-div">
@@ -111,13 +103,11 @@ $ngo_id = $_GET['ngo'];
         </div>
         <?php
             if(isset($_POST['add-donor'])){
-                $name = $_POST['b-name'];
-                $email = $_POST['b-email'];
-                $phone = $_POST['b-phone'];
-                $dob = $_POST['b-dob'];
-                $occupation = $_POST['b-occupation'];
+                $name = $_POST['d-name'];
+                $email = $_POST['d-email'];
+                $phone = $_POST['d-phone'];
 
-                $userIn->registerDonor(null, $name, $email, $phone, $dob, $occupation, $ngo_id);
+                $donorIn->registerDonor(null, $name, $email, $phone, $ngo_id);
             }
         ?>
     </div>
