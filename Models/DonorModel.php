@@ -5,12 +5,10 @@ require_once("../Config/Connection.php");
 class DonorModel extends Connection {
 
     private $id;
-    private $benefName;
-    private $benefOccupation;
-    private $benefPhone;
-    private $benefDob;
-    private $benefEmail;
-    private $benefNgo;
+    private $donorName;
+    private $donorEmail;
+    private $donorPhone;
+    private $donorNgo;
 
     public function __construct(){
         parent::__construct();
@@ -24,7 +22,7 @@ class DonorModel extends Connection {
         $this->donorNgo = $ngo;
 
         try {
-            $sql = $this->db->prepare("INSERT INTO ngo_donors(donor_name, donor_email, donor_phone, ngo_id) VALUES(?,?,?,?,?)");
+            $sql = $this->db->prepare("INSERT INTO ngo_donors(donor_name, donor_email, donor_phone, ngo_id) VALUES(?,?,?,?)");
             $sql->execute([$name, $email, $phone, $ngo]);
             return $this->db->lastInsertId();
         } catch(Exception $e) {

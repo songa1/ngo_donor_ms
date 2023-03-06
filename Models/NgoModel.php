@@ -1,6 +1,6 @@
 <?php
 
-require_once("../Config/Connection.php");
+require_once("C:/xampp/htdocs/NGO_PROJECT/Config/Connection.php");
 
 class NgoModel extends Connection{
     private $id;
@@ -74,10 +74,10 @@ class NgoModel extends Connection{
     }
     //function for updating
 
-    public function updateNgo($id){
+    public function addNgoCreator($userId, $ngo_id){
         try {
             $sql = $this->db->prepare("UPDATE ngo SET created_by=? WHERE ngo_id=?");
-            $sql->execute([$id, $this->id]);
+            $sql->execute([$userId, $ngo_id]);
             return true;
         } catch (Exception $e) {
             return $e->getMessage();

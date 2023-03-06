@@ -6,7 +6,7 @@
         <div class="menu">
             <div class="profile-name">
                 <img src="../assets/images/TRAINING BANNER.gif" alt="Profile picture">
-                <p>Damascene</p>
+                <p><?php echo $_COOKIE['userName']; ?></p>
             </div>
             <a href="../index.php" id="logout">Log out</a>
         </div>

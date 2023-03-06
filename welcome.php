@@ -1,3 +1,11 @@
+<?php
+
+$user_id = $_COOKIE['userId'];
+$user_name = $_COOKIE['userName'];
+$user_role = $_COOKIE['userRole'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +27,7 @@
                     require_once './Models/NgoModel.php';
 
                     $ngoInstance = new NgoModel();
-                    $ngo = $ngoInstance->getById(8);
+                    $ngo = $ngoInstance->getById($user_id);
                     ?>
                 <a class="ngo" href="./dashboard/analytics.php?ngo=<?php echo $ngo['ngo_id'] ?>">
                     <div><p><?php echo $ngo['ngo_name']; ?></p></div>

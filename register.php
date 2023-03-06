@@ -109,9 +109,9 @@
                         $ngoId = $ngoInstace->addNgo();
 
                         $userInstance = new UserModel();
-                        $userRes = $userInstance->registerUser(null, $employeeName, $employeeEmail, $employeePhone, $employeeDob, $employeePass, $ngoId, 1);
+                        $userRes = $userInstance->registerUser(null, $employeeName, $employeeEmail, $employeePhone, $employeeDob, $employeePass, $ngoId, 2);
 
-                        $ngoInstace->updateNgo($userRes);
+                        $ngoInstace->addNgoCreator($userRes, $ngoId);
 
                         echo "<script>alert('NGO and User added!')</script>";
                     }else{

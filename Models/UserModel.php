@@ -1,6 +1,6 @@
 <?php
 
-require_once("../Config/Connection.php");
+require_once("C:/xampp/htdocs/NGO_PROJECT/Config/Connection.php");
 
 class UserModel extends Connection {
 
@@ -40,12 +40,13 @@ class UserModel extends Connection {
         try {
             $query = $this->db->prepare("SELECT * FROM ngo_employees WHERE employee_email = ? AND employee_password = ?"); 
             $query->execute([$email, $password]); 
-
-            $count = count($query->fetchAll());  
-            if($count == 1)  
+            $data = $query->fetch();
+            if($data)  
             {  
-                $_SESSION["email"] = $email;  
-                header("../welcome.php");  
+                setcookie('userId', $data['employee_id'], time() + (86400 * 30), "/");
+                setcookie('userName', $data['employee_name'], time() + (86400 * 30), "/");
+                setcookie('userRole', $data['role_id'], time() + (86400 * 30), "/");
+                header("Location: ./welcome.php");  
                 $message = '<script>alert("Login successful!!")</script>';
                 return $message;
             } else{  
