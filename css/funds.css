@@ -1,0 +1,7 @@
+.input-div select {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--input-border);
+    outline: none;
+}

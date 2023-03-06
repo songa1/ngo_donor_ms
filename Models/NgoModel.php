@@ -87,6 +87,17 @@ class NgoModel extends Connection{
 
     //function for delete
 
+    public function deleteNgo($id){
+        try{
+            $stm = $this->db->prepare("DELETE FROM ngo_employees WHERE employee_id = ?");
+            $stm->execute([$id]);
+            return true;
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
+
     
 
 }

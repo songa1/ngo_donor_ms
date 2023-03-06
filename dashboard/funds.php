@@ -1,6 +1,11 @@
 <?php
 
+require '../assets/components/checkAuth.php';
+checkAuth();
+
 $ngo_id = $_GET['ngo'];
+require_once '../Models/DonorModel.php';
+$donorIn = new DonorModel();
 
 ?>
 
@@ -14,6 +19,7 @@ $ngo_id = $_GET['ngo'];
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/funds.css">
 </head>
 <body>
     <div class="container">
@@ -52,20 +58,30 @@ $ngo_id = $_GET['ngo'];
                                     $fundIn = new FundModel();
                                     $funds = $fundIn->listFundsForNgo($ngo_id);
                                     foreach($funds as $fund){
+                                        $donorName = $donorIn->getDonorById($fund['fund_donor']);
                                         ?>
                                             <tr>
                                                 <td><?php echo $fund['fund_id'] ?></td>
                                                 <td><?php echo $fund['fund_amount'] ?></td>
-                                                <td><?php echo $fund['fund_donor'] ?></td>
+                                                <td><?php echo $donorName['donor_name']; ?></td>
                                                 <td>
-                                                    <div class="button-div
-                                                    ">
+                                                    <form class="button-div
+                                                    " method="POST">
                                                         <input type="submit" value="Edit">
-                                                        <input type="submit" value="Delete">
-                                                    </div>
+                                                        <input type="submit" value="Delete" name="delete_fund">
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php
+                                    }
+
+                                    if(isset($_POST['delete_fund'])){
+                                        $result = $userIn->deleteFund($userId);
+                                        if($result){
+                                            echo "<script>window.location.href = './funds.php?ngo='+$ngo_id</script>";
+                                        }else{
+                                            echo $result;
+                                        }
                                     }
                                 ?>
                             </tbody>
@@ -83,41 +99,51 @@ $ngo_id = $_GET['ngo'];
                 </div>
                 <div class="modal-body">
                     <div class="input-div">
-                        <label for="b-name">Beneficiary Name</label>
-                        <input type="text" name="b-name" id="b-name" placeholder="Name" required>
+                        <label for="f-source">Fund Source</label>
+                        <select name="f-source" id="f-source" required>
+                            <option>Select the source of this fund</option>
+                            <?php
+                                $donors = $donorIn->listDonorsForNgo($ngo_id);
+                                foreach($donors as $donor){
+                                    ?>
+                                        <option value="<?php echo $donor['donor_id'] ?>"><?php echo $donor['donor_name'] ?></option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
                     </div>
                     <div class="input-div">
-                        <label for="b-email">Beneficiary Email</label>
-                        <input type="email" name="b-email" id="b-email" placeholder="Email" required>
+                        <label for="f-amount">Fund Amount</label>
+                        <input type="number" name="f-amount" id="f-amount" placeholder="Amount" required>
                     </div>
                     <div class="input-div">
-                        <label for="b-phone">Beneficiary Phone Number</label>
-                        <input type="tel" name="b-phone" id="b-phone" placeholder="Phone Number" required>
-                    </div>
-                    <div class="input-div">
-                        <label for="b-occupation">Beneficiary Occupation</label>
-                        <input type="text" name="b-occupation" id="b-occupation" placeholder="Occupation" required>
-                    </div>
-                    <div class="input-div">
-                        <label for="e-dob">Beneficiary Date Of Birth</label>
-                        <input type="date" name="b-dob" id="b-dob" placeholder="Date Of Birth" required>
+                        <label for="b-type">Funds Type</label>
+                        <select name="f-type" id="f-type" required>
+                            <option>Select a fund type</option>
+                            <?php
+                                $types = $fundIn->listAllTypesOfFunds();
+                                foreach($types as $type){
+                                    ?>
+                                        <option value="<?php echo $type['funtype_id'] ?>"><?php echo $type['type_name'] ?></option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer button-div">
                     <div></div>
-                    <input type="submit" value="Add Beneficiary" name="add-beneficiary">
+                    <input type="submit" value="Add Fund" name="add-fund">
                 </div>
             </form>
         </div>
         <?php
-            if(isset($_POST['add-beneficiary'])){
-                $name = $_POST['b-name'];
-                $email = $_POST['b-email'];
-                $phone = $_POST['b-phone'];
-                $dob = $_POST['b-dob'];
-                $occupation = $_POST['b-occupation'];
+            if(isset($_POST['add-fund'])){
+                $source = $_POST['f-source'];
+                $amount = $_POST['f-amount'];
+                $type = $_POST['f-type'];
 
-                $benefIn->registerBeneficiary(null, $name, $email, $phone, $dob, $occupation, $ngo_id);
+                $fundIn->registerFunds(null, $source, $amount, $ngo_id, $type);
             }
         ?>
     </div>

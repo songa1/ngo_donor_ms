@@ -1,5 +1,8 @@
 <?php
 
+require '../assets/components/checkAuth.php';
+checkAuth();
+
 $ngo_id = $_GET['ngo'];
 
 ?>
@@ -51,22 +54,32 @@ $ngo_id = $_GET['ngo'];
 
                                     $userIn = new UserModel();
                                     $employees = $userIn->listEmployees($ngo_id);
-                                    // echo $employees;
+                                    $userId = 0;
                                     foreach($employees as $employee){
+                                        $userId = $employee['employee_id'];
                                         ?>
                                             <tr>
                                                 <td><?php echo $employee['employee_id'] ?></td>
                                                 <td><?php echo $employee['employee_name'] ?></td>
                                                 <td><?php echo $employee['employee_email'] ?></td>
                                                 <td>
-                                                    <div class="button-div
-                                                    ">
+                                                    <form class="button-div
+                                                    " method="POST">
                                                         <input type="submit" value="Edit">
-                                                        <input type="submit" value="Delete">
-                                                    </div>
+                                                        <input type="submit" value="Delete" name="delete_user">
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php
+                                    }
+
+                                    if(isset($_POST['delete_user'])){
+                                        $result = $userIn->deleteNgo($userId);
+                                        if($result){
+                                            echo "<script>window.location.href = './users.php?ngo='+$ngo_id</script>";
+                                        }else{
+                                            echo $result;
+                                        }
                                     }
                                 ?>
                             </tbody>

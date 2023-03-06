@@ -1,7 +1,29 @@
 <?php
 
-$ngo_id = $_GET['ngo'];
+require '../assets/components/checkAuth.php';
+checkAuth();
 
+require_once '../Models/NgoModel.php';
+require_once '../Models/BeneficiaryModel.php';
+require_once '../Models/DonorModel.php';
+require_once '../Models/FundModel.php';
+
+$ngo_id = $_GET['ngo'];
+$ngoIn = new NgoModel();
+$benefIn = new BeneficiaryModel();
+$donorIn = new DonorModel();
+$funds = new FundModel();
+
+$ngos = $ngoIn->getAll();
+$donors = $donorIn->listDonorsForNgo($ngo_id);
+$beneficiaries = $benefIn->listBeneficiariesByNgo($ngo_id);
+
+$fundAmount = 0;
+
+$funds = $funds->listFundsForNgo($ngo_id);
+foreach($funds as $fund){
+    $fundAmount += $fund['fund_amount'];
+}
 
 ?>
 
@@ -40,21 +62,28 @@ $ngo_id = $_GET['ngo'];
                         </div>
                     </div>
                     <div class="data-table">
-                        <div class="analytic">
-                            <h1>NGOs</h1>
-                            <p>12</p>
-                        </div>
+                        <?php
+                            if($_COOKIE['userRole'] == 1){
+                                ?>
+                                    <div class="analytic">
+                                        <h1>NGOs</h1>
+                                        <p><?php echo count($ngos); ?></p>
+                                    </div>
+                                <?php
+                            }
+                        
+                        ?>
                         <div class="analytic">
                             <h1>Donors</h1>
-                            <p>12</p>
+                            <p><?php echo count($donors); ?></p>
                         </div>
                         <div class="analytic">
                             <h1>Beneficiaries</h1>
-                            <p>12</p>
+                            <p><?php echo count($beneficiaries); ?></p>
                         </div>
                         <div class="analytic">
-                            <h1>Funds ($)</h1>
-                            <p>12</p>
+                            <h1>Raised (RWF)</h1>
+                            <p><?php echo $fundAmount; ?></p>
                         </div>
                     </div>
                 </div>

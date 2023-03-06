@@ -2,14 +2,16 @@
 
 ?>
     <div class="sidebar-menu">
+        
         <a href="./analytics.php?ngo=<?php echo $ngo_id; ?>">Analytics</a>
         <?php
             if($_COOKIE['userRole'] == 1) {
                 ?>
-                    <a href="./ngos.php>NGO</a>
+                    <a href="./ngos.php">NGO</a>
                 <?php
             }
         ?>
+
         <a href="./beneficiaries.php?ngo=<?php echo $ngo_id; ?>">Beneficiaries</a>
         <a href="./donors.php?ngo=<?php echo $ngo_id; ?>">Donors</a>
         <a href="./funds.php?ngo=<?php echo $ngo_id; ?>">Funds</a>

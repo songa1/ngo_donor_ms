@@ -21,7 +21,7 @@
 </head>
 <body>
     <div class="container">
-    <?php include('./assets/components/notLoggedInNav.php') ?>
+    <?php include('./assets/components/topNavigation.php') ?>
         <div class="center-part">
             <h3>Create a new account</h3>
             <form class="register-form" method="POST">

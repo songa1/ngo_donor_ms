@@ -1,5 +1,8 @@
 <?php
 
+require '../assets/components/checkAuth.php';
+checkAuth();
+
 $ngo_id = $_GET['ngo'];
 
 
@@ -58,14 +61,23 @@ $ngo_id = $_GET['ngo'];
                                                 <td><?php echo $donor['donor_name'] ?></td>
                                                 <td><?php echo $donor['donor_email'] ?></td>
                                                 <td>
-                                                    <div class="button-div
-                                                    ">
+                                                    <form class="button-div
+                                                    " method="POST">
                                                         <input type="submit" value="Edit">
-                                                        <input type="submit" value="Delete">
-                                                    </div>
+                                                        <input type="submit" value="Delete" name="delete_donor">
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php
+                                    }
+
+                                    if(isset($_POST['delete_donor'])){
+                                        $result = $userIn->deleteDonor($userId);
+                                        if($result){
+                                            echo "<script>window.location.href = './donors.php?ngo='+$ngo_id</script>";
+                                        }else{
+                                            echo $result;
+                                        }
                                     }
                                 ?>
                             </tbody>

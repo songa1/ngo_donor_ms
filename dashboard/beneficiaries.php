@@ -1,5 +1,8 @@
 <?php
 
+require '../assets/components/checkAuth.php';
+checkAuth();
+
 $ngo_id = $_GET['ngo'];
 
 ?>
@@ -49,7 +52,7 @@ $ngo_id = $_GET['ngo'];
                                     require_once '../Models/BeneficiaryModel.php';
 
                                     $benefIn = new BeneficiaryModel();
-                                    $beneficiaries = $benefIn->listBeneficiariesById($ngo_id);
+                                    $beneficiaries = $benefIn->listBeneficiariesByNgo($ngo_id);
                                     foreach($beneficiaries as $beneficiary){
                                         ?>
                                             <tr>
@@ -57,14 +60,23 @@ $ngo_id = $_GET['ngo'];
                                                 <td><?php echo $beneficiary['beneficiary_name'] ?></td>
                                                 <td><?php echo $beneficiary['beneficiary_occupation'] ?></td>
                                                 <td>
-                                                    <div class="button-div
-                                                    ">
+                                                <form class="button-div
+                                                    " method="POST">
                                                         <input type="submit" value="Edit">
-                                                        <input type="submit" value="Delete">
-                                                    </div>
+                                                        <input type="submit" value="Delete" name="delete_benef">
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php
+                                    }
+
+                                    if(isset($_POST['delete_benef'])){
+                                        $result = $userIn->deleteBeneficiary($userId);
+                                        if($result){
+                                            echo "<script>window.location.href = './beneficiaries.php?ngo='+$ngo_id</script>";
+                                        }else{
+                                            echo $result;
+                                        }
                                     }
                                 ?>
                             </tbody>

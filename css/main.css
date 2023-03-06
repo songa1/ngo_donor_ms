@@ -79,7 +79,7 @@ body {
     border: 1px solid var(--input-border);
 }
 
-.input-div input {
+.input-div input, select {
     width: 100%;
     margin-bottom: 20px;
     padding: 20px;

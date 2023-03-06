@@ -41,6 +41,17 @@ class DonorModel extends Connection {
             return $e->getMessage();
         }
     }
+
+    public function getDonorById($id){
+        try{
+            $stm = $this->db->prepare("SELECT donor_name FROM ngo_donors WHERE donor_id = ?");
+            $stm->execute([$id]);
+            return $stm->fetch();
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
 }
 
 ?>

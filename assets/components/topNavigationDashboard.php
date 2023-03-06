@@ -6,9 +6,12 @@
         <div class="menu">
             <div class="profile-name">
                 <img src="../assets/images/TRAINING BANNER.gif" alt="Profile picture">
-                <p><?php echo $_COOKIE['userName']; ?></p>
+                <a href="../welcome.php"><?php echo $_COOKIE['userName']; ?></a>
             </div>
-            <a href="../index.php" id="logout">Log out</a>
+            <form action="../out.php" method="POST">
+                <input type="submit" id="logout" value="Log out">
+            </form>
+            
         </div>
     </div>
 <?php

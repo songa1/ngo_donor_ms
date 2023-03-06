@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <?php include('./assets/components/notLoggedInNav.php') ?>
+        <?php include('./assets/components/topNavigation.php') ?>
         <div class="center-part">
             <h3>Login to your account</h3>
             <form class="login-form" method="POST">

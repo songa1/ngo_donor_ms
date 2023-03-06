@@ -34,7 +34,7 @@ class BeneficiaryModel extends Connection {
         }
     }
 
-    public function listBeneficiariesById($ngo){
+    public function listBeneficiariesByNgo($ngo){
         try{
             $stm = $this->db->prepare("SELECT * FROM ngo_beneficiaries WHERE ngo_id = ?");
             $stm->execute([$ngo]);

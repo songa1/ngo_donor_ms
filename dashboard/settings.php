@@ -1,5 +1,8 @@
 <?php
 
+require '../assets/components/checkAuth.php';
+checkAuth();
+
 $ngo_id = $_GET['ngo'];
 
 

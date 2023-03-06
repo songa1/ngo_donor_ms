@@ -46,8 +46,9 @@ class UserModel extends Connection {
                 setcookie('userId', $data['employee_id'], time() + (86400 * 30), "/");
                 setcookie('userName', $data['employee_name'], time() + (86400 * 30), "/");
                 setcookie('userRole', $data['role_id'], time() + (86400 * 30), "/");
-                header("Location: ./welcome.php");  
+                setcookie('auth', 1, time() + (86400 * 30), "/"); 
                 $message = '<script>alert("Login successful!!")</script>';
+                header("Location: ./welcome.php"); 
                 return $message;
             } else{  
                 $message = '<script>alert("Wrong Data!")</script>'; 
@@ -64,6 +65,17 @@ class UserModel extends Connection {
             $stm->execute([$ngo]);
             //$stm->setFetchMode()
             return $stm->fetchAll();
+        }
+        catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+    public function deleteEmployee($id){
+        try{
+            $stm = $this->db->prepare("DELETE FROM ngo_employees WHERE employee_id = ?");
+            $stm->execute([$id]);
+            return true;
         }
         catch(Exception $e){
             return $e->getMessage();

@@ -1,5 +1,12 @@
 <?php
 
+if(isset($_COOKIE['auth'])){
+    if($_COOKIE['auth'] == 0){
+        header("Location: ./index.php");
+    }else{
+        
+    }
+}
 $user_id = $_COOKIE['userId'];
 $user_name = $_COOKIE['userName'];
 $user_role = $_COOKIE['userRole'];
