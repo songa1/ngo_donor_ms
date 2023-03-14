@@ -1,6 +1,6 @@
 <?php
 
-require '../assets/components/checkAuth.php';
+require 'assets/components/checkAuth.php';
 checkAuth();
 
 require_once '../Models/NgoModel.php';

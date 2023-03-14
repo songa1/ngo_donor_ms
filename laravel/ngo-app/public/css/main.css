@@ -129,3 +129,14 @@ footer {
     width: 30px;
     border-radius: 100px;
 }
+
+.reg-parts {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.reg-part {
+    flex: 1;
+}
