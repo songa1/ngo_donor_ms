@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('ngo_funtype', function (Blueprint $table) {
             $table->integer('funtype_id', true);
             $table->string('type_name', 30)->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->timestamps();
         });
     }
 

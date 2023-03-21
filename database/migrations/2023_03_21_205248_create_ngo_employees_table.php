@@ -22,10 +22,7 @@ return new class extends Migration
             $table->string('employee_password', 100)->nullable();
             $table->integer('ngo_id')->nullable()->index('ngo_id');
             $table->integer('role_id')->nullable()->index('role_id');
-            $table->dateTime('created_at')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->timestamps();
         });
     }
 

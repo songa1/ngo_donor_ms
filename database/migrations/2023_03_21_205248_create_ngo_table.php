@@ -20,10 +20,7 @@ return new class extends Migration
             $table->string('ngo_phone', 15)->nullable();
             $table->string('ngo_email', 50)->nullable();
             $table->string('ngo_url', 100)->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->timestamps();
         });
     }
 

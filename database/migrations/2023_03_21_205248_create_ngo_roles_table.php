@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('ngo_roles', function (Blueprint $table) {
             $table->integer('role_id', true);
             $table->string('role_name', 20)->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->timestamps();
         });
     }
 

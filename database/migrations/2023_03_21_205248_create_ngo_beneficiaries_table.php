@@ -21,10 +21,7 @@ return new class extends Migration
             $table->string('beneficiary_phone', 20)->nullable();
             $table->string('beneficiary_email', 30)->nullable();
             $table->integer('ngo_id')->nullable()->index('ngoid');
-            $table->dateTime('created_at')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->timestamps();
         });
     }
 

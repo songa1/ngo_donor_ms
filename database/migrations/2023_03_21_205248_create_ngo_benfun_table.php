@@ -17,10 +17,7 @@ return new class extends Migration
             $table->integer('benfun_id', true);
             $table->integer('beneficiary_id')->nullable()->index('ben_funds');
             $table->integer('fund_id')->nullable()->index('funds_ben');
-            $table->dateTime('created_at')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->timestamps();
         });
     }
 

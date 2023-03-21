@@ -18,10 +18,7 @@ return new class extends Migration
             $table->integer('fund_donor')->nullable()->index('fund_donor');
             $table->integer('fund_amount')->nullable();
             $table->integer('ngo_id')->nullable()->index('ngo__id');
-            $table->dateTime('created_at')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->dateTime('updated_at')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->timestamps();
             $table->integer('fund_type')->nullable()->index('fund_type');
         });
     }
