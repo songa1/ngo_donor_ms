@@ -3,13 +3,13 @@
 @section('dashboard')
     <div class="right">
         <div class="top-action">
-            <h2>NGOs</h2>
+            <h2>Employees</h2>
             <div class="new-search">
                 <div class="input-search">
                     <input type="text" placeholder="Search...">
                 </div>
                 <div class="button-div">
-                    <input type="submit" name="add-new-ngo" id="add-new-ngo" value="+">
+                    <input type="submit" name="add-new" id="add-new" value="+">
                 </div>
             </div>
         </div>
@@ -18,21 +18,20 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>NGO Name</th>
-                        <th>NGO Address</th>
+                        <th>Employee Name</th>
+                        <th>Employee Email</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Compassion</td>
-                        <td>KK</td>
+                        <td>Bernard Makuza</td>
+                        <td>makuza@ngo.com</td>
                         <td>
-                        <form class="button-div
-                            " method="POST">
+                            <form class="button-div" method="POST">
                                 <input type="submit" value="Edit">
-                                <input type="submit" value="Delete" name="delete_ngo">
+                                <input type="submit" value="Delete" name="delete_user">
                             </form>
                         </td>
                     </tr>
