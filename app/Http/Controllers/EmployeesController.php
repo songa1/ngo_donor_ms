@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NgoEmployee;
 
 class EmployeesController extends Controller
 {
@@ -11,7 +12,8 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        //
+        $employees = NgoEmployee::all();
+        return view('dashboard.employees')->with('employees', $employees);
     }
 
     /**

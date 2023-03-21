@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NgoBeneficiary;
 
 class BeneficiariesController extends Controller
 {
@@ -11,7 +12,8 @@ class BeneficiariesController extends Controller
      */
     public function index()
     {
-        //
+        $beneficiaries = NgoBeneficiary::all();
+        return view('dashboard.beneficiaries')->with('beneficiaries', $beneficiaries);
     }
 
     /**

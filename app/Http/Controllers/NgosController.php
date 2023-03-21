@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ngo;
 
 class NgosController extends Controller
 {
@@ -11,7 +12,8 @@ class NgosController extends Controller
      */
     public function index()
     {
-        //
+        $ngos = Ngo::all();
+        return view('dashboard.ngos')->with('ngos', $ngos);
     }
 
     /**
