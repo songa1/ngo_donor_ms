@@ -29,25 +29,15 @@ Route::get('/dashboard', function () {
     return view('dashboard.analytics');
 });
 
-Route::get('/dashboard/ngos', function () {
-    return view('dashboard.ngos');
-});
+Route::resource('/dashboard/ngos', 'NgosController');
 
-Route::get('/dashboard/beneficiaries', function () {
-    return view('dashboard.beneficiaries');
-});
+Route::resource('/dashboard/beneficiaries', 'BeneficiariesController');
 
-Route::get('/dashboard/donors', function () {
-    return view('dashboard.donors');
-});
+Route::resource('/dashboard/donors', 'DonorsController');
 
-Route::get('/dashboard/funds', function () {
-    return view('dashboard.funds');
-});
+Route::resource('/dashboard/funds', 'FundsController');
 
-Route::get('/dashboard/employees', function () {
-    return view('dashboard.employees');
-});
+// Route::resource('/dashboard/employees', 'EmployeesController');
 
 Route::get('/dashboard/settings', function () {
     return view('dashboard.settings');

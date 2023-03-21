@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DonorsController extends Controller
+class NgosController extends Controller
 {
     /**
      * Display a listing of the resource.
