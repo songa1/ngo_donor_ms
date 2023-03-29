@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="data-table">
+            @if(count($donors) > 0)
             <table>
                 <thead>
                     <tr>
@@ -23,12 +24,13 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                @foreach($donors as $donor)
                 <tbody>
                 
                     <tr>
-                        <td>1</td>
-                        <td>Open Society</td>
-                        <td>open@society.com</td>
+                        <td>{{$donor->donor_id}}</td>
+                        <td>{{$donor->donor_name}}</td>
+                        <td>{{$donor->donor_email}}</td>
                         <td>
                             <form class="button-div
                             " method="POST">
@@ -37,9 +39,12 @@
                             </form>
                         </td>
                     </tr>
-                            
                 </tbody>
+                @endforeach
             </table>
+            @else
+            <p>No Donor registered currently!</p>
+            @endif
         </div>
     </div>
 @endsection

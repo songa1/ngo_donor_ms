@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\NgoBeneficiary;
+use App\Models\Ngo;
 
-class BeneficiariesController extends Controller
+class PagesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function welcome()
     {
-        $beneficiaries = NgoBeneficiary::all();
-        return view('dashboard.beneficiaries')->with('beneficiaries', $beneficiaries);
+        $ngo = Ngo::where('created_by', '13')->get();
+        return view('welcome')->with('ngo', $ngo);
     }
 
     /**

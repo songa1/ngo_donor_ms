@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="data-table">
+            @if(count($employees) > 0)
             <table>
                 <thead>
                     <tr>
@@ -23,11 +24,12 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                @foreach($employees as $employee)
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Bernard Makuza</td>
-                        <td>makuza@ngo.com</td>
+                        <td>{{$employee->employee_id}}</td>
+                        <td>{{$employee->employee_name}}</td>
+                        <td>{{$employee->employee_email}}</td>
                         <td>
                             <form class="button-div" method="POST">
                                 <input type="submit" value="Edit">
@@ -36,7 +38,11 @@
                         </td>
                     </tr>
                 </tbody>
+                @endforeach
             </table>
+            @else
+            <p>No Employee registered currently!</p>
+            @endif
         </div>
     </div>
 @endsection

@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="data-table">
+            @if(count($beneficiaries) > 0)
             <table>
                 <thead>
                     <tr>
@@ -23,11 +24,12 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                @foreach($beneficiaries as $beneficiary)
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Icyeza</td>
-                        <td>Student</td>
+                        <td>{{$beneficiary->beneficiary_id}}</td>
+                        <td>{{$beneficiary->beneficiary_name}}</td>
+                        <td>{{$beneficiary->beneficiary_occupation}}</td>
                         <td>
                         <form class="button-div" method="POST">
                                 <input type="submit" value="Edit">
@@ -37,7 +39,11 @@
                     </tr>
                             
                 </tbody>
+                @endforeach
             </table>
+            @else
+            <p>No beneficiary registered currently!</p>
+            @endif
         </div>
     </div>
 @endsection     

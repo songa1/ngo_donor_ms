@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NgoDonor;
 
 class DonorsController extends Controller
 {
@@ -11,7 +12,8 @@ class DonorsController extends Controller
      */
     public function index()
     {
-        //
+        $donors = NgoDonor::all();
+        return view('dashboard.donors')->with('donors', $donors);
     }
 
     /**

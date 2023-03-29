@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NgoFund;
 
 class FundsController extends Controller
 {
@@ -11,7 +12,8 @@ class FundsController extends Controller
      */
     public function index()
     {
-        //
+        $funds = NgoFund::all();
+        return view('dashboard.funds')->with('funds', $funds);
     }
 
     /**

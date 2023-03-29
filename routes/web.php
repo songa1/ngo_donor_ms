@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,32 +12,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
+
+Route::view('/', 'login');
+
+Route::view('/register', 'register');
+
+Route::get('/welcome', 'App\Http\Controllers\PagesController@welcome');
+
+Route::prefix('dashboard')->group(function () {
+
+    Route::resource('/beneficiaries', 'App\Http\Controllers\BeneficiariesController');
+
+    Route::resource('/donors', 'App\Http\Controllers\DonorsController');
+
+    Route::resource('/funds', 'App\Http\Controllers\FundsController');
+
+    Route::resource('/employees', 'App\Http\Controllers\EmployeesController');
+
+    Route::view('/settings', 'dashboard.settings');
+    
+    Route::view('/', 'dashboard.analytics');
+
+    Route::resource('ngos', 'App\Http\Controllers\NgosController');
+    
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard.analytics');
-});
-
-Route::resource('/dashboard/ngos', 'NgosController');
-
-Route::resource('/dashboard/beneficiaries', 'BeneficiariesController');
-
-Route::resource('/dashboard/donors', 'DonorsController');
-
-Route::resource('/dashboard/funds', 'FundsController');
-
-// Route::resource('/dashboard/employees', 'EmployeesController');
-
-Route::get('/dashboard/settings', function () {
-    return view('dashboard.settings');
-});
