@@ -1,0 +1,80 @@
+
+
+.content-part {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: start;
+    color: #333;
+
+}
+
+.content-part .left {
+    flex: 1;
+    background-color: var(--clear-color);
+}
+
+.content-part .left .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-part .left .sidebar-menu a {
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    border-bottom: 1px solid var(--white);
+}
+
+.content-part .left .sidebar-menu a:hover {
+    background-color: var(--input-border);
+}
+
+.content-part .left .sidebar-menu a:active {
+    border: 3px solid var(--white);
+}
+
+.content-part .right {
+    flex: 5;
+    background-color: var(--clear-color);
+    padding: 10px 20px;
+}
+
+.top-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--white);
+}
+
+.new-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-search input, select {
+    padding: 10px 20px;
+    border: 1px solid var(--input-border);
+    color: var(--main-color);
+}
+
+table {
+    width: 100%;
+    margin-top: 1%;
+    color: #333;
+}
+
+thead, tbody {
+    text-align: left;
+}
+
+table, td, tr, th {
+    border: 1px solid #333;
+    padding: 10px;
+    border-collapse: collapse;
+}
+
