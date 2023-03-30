@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('dashboard')
+
     <div class="right">
         <div class="top-action">
             <h2>Donors</h2>
@@ -47,4 +48,31 @@
             @endif
         </div>
     </div>
+    <div id="addDonor" class="modal">
+        <!-- Modal content -->
+            <form class="modal-content" method="POST">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Add a new Donor</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="input-div">
+                        <label for="d-name">Donor Name</label>
+                        <input type="text" name="d-name" id="d-name" placeholder="Name" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="d-email">Donor Email</label>
+                        <input type="email" name="d-email" id="d-email" placeholder="Email" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="d-phone">Donor Phone Number</label>
+                        <input type="tel" name="d-phone" id="d-phone" placeholder="Phone Number" required>
+                    </div>
+                </div>
+                <div class="modal-footer button-div">
+                    <div></div>
+                    <input type="submit" value="Add Donor" name="add-donor">
+                </div>
+            </form>
+        </div>
 @endsection

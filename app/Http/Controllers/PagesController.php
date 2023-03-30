@@ -7,60 +7,21 @@ use App\Models\Ngo;
 
 class PagesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function welcome()
     {
         $ngo = Ngo::where('created_by', '13')->get();
         return view('welcome')->with('ngo', $ngo);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function login()
     {
-        //
+        return view('login');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function register()
     {
-        //
+        return view('register');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

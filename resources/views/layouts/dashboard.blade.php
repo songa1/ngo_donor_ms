@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{config('app.name')}}</title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/analytics.css') }}">
     <link rel="stylesheet" href="{{ asset('css/funds.css') }}">
     <link rel="stylesheet" href="{{ asset('css/ngo-list.css') }}">
     <link rel="stylesheet" href="{{ asset('css/setting.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
     
 </head>
 <body>
@@ -41,5 +41,10 @@
             <p>&copy; Achille Songa 2023</p>
         </footer>
     </div>
+    <script src="{{asset('js/benefModal.js')}}"></script>
+    <script src="{{asset('js/donorModal.js')}}"></script>
+    <script src="{{asset('js/modal.js')}}"></script>
+    <script src="{{asset('js/fundsModal.js')}}"></script>
+    <script src="{{asset('js/ngoModal.js')}}"></script>
 </body>
 </html>

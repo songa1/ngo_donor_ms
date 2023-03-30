@@ -3,8 +3,6 @@ let userModal = document.getElementById("addUser");
 // Get the button that opens the modal
 let userModalBtn = document.getElementById("add-new");
 
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 userModalBtn.onclick = function() {

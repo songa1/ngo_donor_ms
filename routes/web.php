@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::view('/', 'login');
+Route::get('/', 'App\Http\Controllers\PagesController@login');
 
-Route::view('/register', 'register');
+Route::get('/register', 'App\Http\Controllers\PagesController@register');
 
 Route::get('/welcome', 'App\Http\Controllers\PagesController@welcome');
 

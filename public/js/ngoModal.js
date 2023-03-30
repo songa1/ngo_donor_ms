@@ -3,9 +3,6 @@ let ngoModal = document.getElementById("addNgo");
 // Get the button that opens the modal
 let ngoModalBtn = document.getElementById("add-new-ngo");
 
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-
 // When the user clicks on the button, open the modal
 ngoModalBtn.onclick = function() {
     ngoModal.style.display = "block";

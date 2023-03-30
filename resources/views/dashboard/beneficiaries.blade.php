@@ -46,4 +46,40 @@
             @endif
         </div>
     </div>
+
+    <div id="addBeneficiary" class="modal">
+        <!-- Modal content -->
+            <form class="modal-content" method="POST">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Add a new Beneficiary</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="input-div">
+                        <label for="b-name">Beneficiary Name</label>
+                        <input type="text" name="b-name" id="b-name" placeholder="Name" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="b-email">Beneficiary Email</label>
+                        <input type="email" name="b-email" id="b-email" placeholder="Email" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="b-phone">Beneficiary Phone Number</label>
+                        <input type="tel" name="b-phone" id="b-phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="b-occupation">Beneficiary Occupation</label>
+                        <input type="text" name="b-occupation" id="b-occupation" placeholder="Occupation" required>
+                    </div>
+                    <div class="input-div">
+                        <label for="e-dob">Beneficiary Date Of Birth</label>
+                        <input type="date" name="b-dob" id="b-dob" placeholder="Date Of Birth" required>
+                    </div>
+                </div>
+                <div class="modal-footer button-div">
+                    <div></div>
+                    <input type="submit" value="Add Beneficiary" name="add-beneficiary">
+                </div>
+            </form>
+        </div>
 @endsection     

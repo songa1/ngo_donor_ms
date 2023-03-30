@@ -3,9 +3,6 @@ let fundsModal = document.getElementById("addFunds");
 // Get the button that opens the modal
 let fundModalBtn = document.getElementById("add-new-fund");
 
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-
 // When the user clicks on the button, open the modal
 fundModalBtn.onclick = function() {
     fundsModal.style.display = "block";
